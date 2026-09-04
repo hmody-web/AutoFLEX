@@ -15,4 +15,6 @@ sed -i '' '59s/std::atomic<mask_t> _maybeMask;/mask_t _maybeMask;/' "$FILE"
 # Replace "std::atomic<preopt_cache_t *> _originalPreoptCache;" with "preopt_cache_t * _originalPreoptCache;" on line 65
 sed -i '' '65s/std::atomic<preopt_cache_t \*> _originalPreoptCache;/preopt_cache_t \* _originalPreoptCache;/' "$FILE"
 
+sed -i '' 's/uint8_t buffer\[bufferSize\];/uint8_t *buffer = (uint8_t *)malloc(bufferSize);/' src/FLEXNetworkTransaction.m
+
 make package
